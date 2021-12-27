@@ -31,7 +31,7 @@ def main():
 
     name = random.choice(display)
 
-    button = st.button(name)
+    button = st.button(name)['disp']
 
     if button:
         my_bar = st.progress(0)
