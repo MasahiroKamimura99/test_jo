@@ -11,7 +11,7 @@ def main():
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
 
-    st.header("ちょっと奇妙な2022年新年のおみくじ")
+    st.header("2022年 新年のjOMIKUJI")
     st.markdown("---")
     #結果(result)をリスト化
     result = [
