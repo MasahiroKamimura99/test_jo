@@ -3,7 +3,7 @@ import random
 import time
 import datetime
 import pandas as pd
-import streamlit.components.v1 as stc
+# import streamlit.components.v1 as stc
 
 
 def main():
@@ -11,7 +11,7 @@ def main():
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
 
-    st.header("2022年 新年のjOMIKUJI")
+    st.header("2024年 新年のjOMIKUJI")
     st.markdown("---")
     #結果(result)をリスト化
     result = [
