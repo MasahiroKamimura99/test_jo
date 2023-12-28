@@ -57,7 +57,10 @@ def main():
         df1 = pd.read_csv('frequency.csv', encoding='utf_8_sig')
         df_out1 = pd.concat([df1, df_tmp], axis=0)
         df_out1.to_csv('frequency.csv', encoding='utf_8_sig', index=False)
+        st.sidebar.text('アクセス回数')
+        st.sidebar.dataframe(df_out1)
 
+        
         my_bar = st.progress(0)
         for percent_complete in range(100):
             time.sleep(0.01)
@@ -98,8 +101,6 @@ def main():
         st.sidebar.markdown("""
                     ---
                     """)
-        st.sidebar.text('アクセス回数')
-        st.sidebar.dataframe(df_out1)
 
         # with st.sidebar.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
         if st.sidebar.button("イイねッ！"):
