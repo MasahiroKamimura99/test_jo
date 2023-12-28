@@ -2,6 +2,7 @@ import streamlit as st
 import random
 import time
 import datetime
+import pytz
 import pandas as pd
 # import streamlit.components.v1 as stc
 
@@ -49,7 +50,7 @@ def main():
     if button:
         st.session_state.count += 1 #値の更新
 
-        dt_now = datetime.datetime.now()
+        dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
         dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
         l = [dt_now_str]
         df_tmp = pd.DataFrame(l)
