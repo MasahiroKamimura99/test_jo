@@ -80,36 +80,36 @@ def main():
         st.sidebar.markdown("""
                     ---
                     """)
-        with st.sidebar.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
-            if st.sidebar.button("イイねッ！"):
+        # with st.sidebar.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
+        if st.sidebar.button("イイねッ！"):
+            dt_now = datetime.datetime.now()
+            dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
+            l = [dt_now_str]
+            df_tmp = pd.DataFrame(l)
+            df_tmp = df_tmp.rename(columns={0:'時刻'})
+            df = pd.read_csv('iine.csv', encoding='utf_8_sig')
+            df_out = pd.concat([df, df_tmp], axis=0)
+            df_out.to_csv('iine.csv', encoding='utf_8_sig', index=False)
+            st.sidebar.success("イイねありがとうございます！")
+
+        with st.sidebar.form("感想・ご意見"):
+            st.sidebar.text("感想・ご意見欄")
+            input_name = st.sidebar.text_input("氏名")
+            input_imp = st.sidebar.text_area("感想")
+
+            # Every form must have a submit button.
+            submitted = st.sidebar.form_submit_button("提出する")
+            if submitted:
                 dt_now = datetime.datetime.now()
                 dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
-                l = [dt_now_str]
-                df_tmp = pd.DataFrame(l)
-                df_tmp = df_tmp.rename(columns={0:'時刻'})
-                df = pd.read_csv('iine.csv', encoding='utf_8_sig')
+                l = [input_name, input_imp, dt_now_str]
+                df_tmp = pd.DataFrame(l).T
+                df_tmp = df_tmp.rename(columns={0:'氏名', 1:'感想', 2:'時刻'})
+                df = pd.read_csv('impression.csv', encoding='utf_8_sig')
                 df_out = pd.concat([df, df_tmp], axis=0)
-                df_out.to_csv('iine.csv', encoding='utf_8_sig', index=False)
-                st.sidebar.success("イイねありがとうございます！")
+                df_out.to_csv('impression.csv', encoding='utf_8_sig', index=False)
 
-            with st.sidebar.form("感想・ご意見"):
-                st.sidebar.text("感想・ご意見欄")
-                input_name = st.sidebar.text_input("氏名")
-                input_imp = st.sidebar.text_area("感想")
-
-                # Every form must have a submit button.
-                submitted = st.sidebar.form_submit_button("提出する")
-                if submitted:
-                    dt_now = datetime.datetime.now()
-                    dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
-                    l = [input_name, input_imp, dt_now_str]
-                    df_tmp = pd.DataFrame(l).T
-                    df_tmp = df_tmp.rename(columns={0:'氏名', 1:'感想', 2:'時刻'})
-                    df = pd.read_csv('impression.csv', encoding='utf_8_sig')
-                    df_out = pd.concat([df, df_tmp], axis=0)
-                    df_out.to_csv('impression.csv', encoding='utf_8_sig', index=False)
-
-                    st.sidebar.success("提出ありがとうございました！")
+                st.sidebar.success("提出ありがとうございました！")
 
 
 if __name__ == '__main__':
