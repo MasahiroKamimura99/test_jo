@@ -11,6 +11,9 @@ def main():
 
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
+        st.session_state.word = ""
+        st.session_state.class = ""
+        st.session_state.pict = ""
 
     st.header("2024年 新年のJomikuji")
     st.markdown("---")
@@ -62,16 +65,24 @@ def main():
         #resultからランダムに選ぶ
         omikuji = random.choice(result)
 
-        st.markdown("# "+omikuji['word'])
-        st.markdown("## "+omikuji['class'])
-        st.image(omikuji['pict'])
+        st.session_state.word = omikuji['word']
+        st.session_state.class = omikuji['class']
+        st.session_state.pict = omikuji['pict']
+
+        st.markdown("# "+st.session_state.word)
+        st.markdown("## "+st.session_state.class)
+        st.image(st.session_state.pict)
+
+        # st.markdown("# "+omikuji['word'])
+        # st.markdown("## "+omikuji['class'])
+        # st.image(omikuji['pict'])
 
         # stc.html("<p style='font-size: 50pt;, color: #ff0000;, font-family:MS Pゴシック,sans-serif;'>" + omikuji['word'])
         st.markdown(omikuji['attention'])
     elif st.session_state.count > 0:
-        st.markdown("# "+omikuji['word'])
-        st.markdown("## "+omikuji['class'])
-        st.image(omikuji['pict'])
+        st.markdown("# "+st.session_state.word)
+        st.markdown("## "+st.session_state.class)
+        st.image(st.session_state.pict)
         
 
 
