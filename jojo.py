@@ -57,7 +57,7 @@ def main():
         df = pd.read_csv('frequency.csv', encoding='utf_8_sig')
         df_out1 = pd.concat([df, df_tmp], axis=0)
         df_out1.to_csv('frequency.csv', encoding='utf_8_sig', index=False)
-        df_out1
+        st.dataframe(df_out1)
 
         my_bar = st.progress(0)
         for percent_complete in range(100):
@@ -111,7 +111,7 @@ def main():
             df2 = pd.read_csv('iine.csv', encoding='utf_8_sig')
             df_out2 = pd.concat([df, df_tmp], axis=0)
             df_out2.to_csv('iine.csv', encoding='utf_8_sig', index=False)
-            df_out2
+            st.dataframe(df_out2)
             st.sidebar.success("イイねありがとうございます！")
 
         with st.sidebar.form("感想・ご意見"):
@@ -130,7 +130,7 @@ def main():
                 df = pd.read_csv('impression.csv', encoding='utf_8_sig')
                 df_out3 = pd.concat([df, df_tmp], axis=0)
                 df_out3.to_csv('impression.csv', encoding='utf_8_sig', index=False)
-                df_out3
+                st.dataframe(df_out3)
 
                 st.sidebar.success("提出ありがとうございました！")
 
