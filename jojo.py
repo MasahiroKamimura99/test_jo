@@ -94,7 +94,7 @@ def main():
 
             with st.sidebar.form("感想・ご意見"):
                 st.sidebar.text("感想・ご意見欄")
-                input_name = st.text_input("氏名")
+                input_name = st.sidebar.text_input("氏名")
                 input_imp = st.sidebar.text_area("感想")
 
                 # Every form must have a submit button.
