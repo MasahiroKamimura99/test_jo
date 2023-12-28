@@ -98,7 +98,7 @@ def main():
             input_imp = st.sidebar.text_area("感想")
 
             # Every form must have a submit button.
-            submitted = st.sidebar.form_submit_button("提出する")
+            submitted = st.form_submit_button("提出する")
             if submitted:
                 dt_now = datetime.datetime.now()
                 dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
