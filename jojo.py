@@ -7,12 +7,12 @@ import pandas as pd
 
 
 def main():
-    st.set_page_config(page_title="メインページ", page_icon='main.ico')
+    st.set_page_config(page_title="Jomikuji", page_icon='main.ico')
 
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
 
-    st.header("2024年 新年のjOMIKUJI")
+    st.header("2024年 新年のJomikuji")
     st.markdown("---")
     #結果(result)をリスト化
     result = [
