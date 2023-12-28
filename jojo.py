@@ -113,7 +113,7 @@ def main():
             df2 = pd.read_csv('iine.csv', encoding='utf_8_sig')
             df_out2 = pd.concat([df2, df_tmp], axis=0)
             df_out2.to_csv('iine.csv', encoding='utf_8_sig', index=False)
-            st.text('イイね回数')
+            st.sidebar.text('イイね回数')
             st.sidebar.dataframe(df_out2)
             st.sidebar.success("イイねありがとうございます！")
 
