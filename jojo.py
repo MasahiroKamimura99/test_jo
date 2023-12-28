@@ -84,9 +84,9 @@ def main():
         # stc.html("<p style='font-size: 50pt;, color: #ff0000;, font-family:MS Pゴシック,sans-serif;'>" + omikuji['word'])
         st.markdown(omikuji['attention'])
     elif st.session_state.count > 0:
-        st.markdown("# "+st.session_state.word)
-        st.markdown("## "+st.session_state.class)
-        st.image(st.session_state.pict)
+        st.markdown("# "+st.session_state.key_1)
+        st.markdown("## "+st.session_state.key_2)
+        st.image(st.session_state.key_3)
         
 
 
