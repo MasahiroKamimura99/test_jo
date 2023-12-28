@@ -55,8 +55,9 @@ def main():
         df_tmp = pd.DataFrame(l)
         df_tmp = df_tmp.rename(columns={0:'時刻'})
         df = pd.read_csv('frequency.csv', encoding='utf_8_sig')
-        df_out = pd.concat([df, df_tmp], axis=0)
-        df_out.to_csv('frequency.csv', encoding='utf_8_sig', index=False)
+        df_out1 = pd.concat([df, df_tmp], axis=0)
+        df_out1.to_csv('frequency.csv', encoding='utf_8_sig', index=False)
+        df_out1
 
         my_bar = st.progress(0)
         for percent_complete in range(100):
@@ -107,9 +108,10 @@ def main():
             l = [dt_now_str]
             df_tmp = pd.DataFrame(l)
             df_tmp = df_tmp.rename(columns={0:'時刻'})
-            df = pd.read_csv('iine.csv', encoding='utf_8_sig')
-            df_out = pd.concat([df, df_tmp], axis=0)
-            df_out.to_csv('iine.csv', encoding='utf_8_sig', index=False)
+            df2 = pd.read_csv('iine.csv', encoding='utf_8_sig')
+            df_out2 = pd.concat([df, df_tmp], axis=0)
+            df_out2.to_csv('iine.csv', encoding='utf_8_sig', index=False)
+            df_out2
             st.sidebar.success("イイねありがとうございます！")
 
         with st.sidebar.form("感想・ご意見"):
@@ -126,8 +128,9 @@ def main():
                 df_tmp = pd.DataFrame(l).T
                 df_tmp = df_tmp.rename(columns={0:'氏名', 1:'感想', 2:'時刻'})
                 df = pd.read_csv('impression.csv', encoding='utf_8_sig')
-                df_out = pd.concat([df, df_tmp], axis=0)
-                df_out.to_csv('impression.csv', encoding='utf_8_sig', index=False)
+                df_out3 = pd.concat([df, df_tmp], axis=0)
+                df_out3.to_csv('impression.csv', encoding='utf_8_sig', index=False)
+                df_out3
 
                 st.sidebar.success("提出ありがとうございました！")
 
