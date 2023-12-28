@@ -77,11 +77,11 @@ def main():
                     """)
 
     if st.session_state.count>0:
-        st.markdown("""
+        st.sidebar.markdown("""
                     ---
                     """)
-        with st.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
-            if st.button("イイねッ！"):
+        with st.sidebar.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
+            if st.sidebar.button("イイねッ！"):
                 dt_now = datetime.datetime.now()
                 dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
                 l = [dt_now_str]
@@ -90,15 +90,15 @@ def main():
                 df = pd.read_csv('iine.csv', encoding='utf_8_sig')
                 df_out = pd.concat([df, df_tmp], axis=0)
                 df_out.to_csv('iine.csv', encoding='utf_8_sig', index=False)
-                st.success("イイねありがとうございます！")
+                st.sidebar.success("イイねありがとうございます！")
 
-            with st.form("感想・ご意見"):
-                st.text("感想・ご意見欄")
+            with st.sidebar.form("感想・ご意見"):
+                st.sidebar.text("感想・ご意見欄")
                 input_name = st.text_input("氏名")
-                input_imp = st.text_area("感想")
+                input_imp = st.sidebar.text_area("感想")
 
                 # Every form must have a submit button.
-                submitted = st.form_submit_button("提出する")
+                submitted = st.sidebar.form_submit_button("提出する")
                 if submitted:
                     dt_now = datetime.datetime.now()
                     dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
@@ -109,7 +109,7 @@ def main():
                     df_out = pd.concat([df, df_tmp], axis=0)
                     df_out.to_csv('impression.csv', encoding='utf_8_sig', index=False)
 
-                    st.success("提出ありがとうございました！")
+                    st.sidebar.success("提出ありがとうございました！")
 
 
 if __name__ == '__main__':
