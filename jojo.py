@@ -11,12 +11,12 @@ def main():
 
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
-    if 'word' not in st.session_state: 
-        st.session_state.word = ""
-    if 'class' not in st.session_state: 
-        st.session_state.class = ""
-    if 'pict' not in st.session_state: 
-        st.session_state.pict = ""
+    if 'key_1' not in st.session_state: 
+        st.session_state.key_1 = ""
+    if 'key_2' not in st.session_state: 
+        st.session_state.key_2 = ""
+    if 'key_3' not in st.session_state: 
+        st.session_state.key_3 = ""
 
     st.header("2024年 新年のJomikuji")
     st.markdown("---")
@@ -69,13 +69,13 @@ def main():
         st.balloons()
         
 
-        st.session_state.word = omikuji['word']
-        st.session_state.class = omikuji['class']
-        st.session_state.pict = omikuji['pict']
+        st.session_state.key_1 = omikuji['word']
+        st.session_state.key_2 = omikuji['class']
+        st.session_state.key_3 = omikuji['pict']
 
-        st.markdown("# "+st.session_state.word)
-        st.markdown("## "+st.session_state.class)
-        st.image(st.session_state.pict)
+        st.markdown("# "+st.session_state.key_1)
+        st.markdown("## "+st.session_state.key_2)
+        st.image(st.session_state.key_3)
 
         # st.markdown("# "+omikuji['word'])
         # st.markdown("## "+omikuji['class'])
