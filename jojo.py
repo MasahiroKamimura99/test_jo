@@ -38,7 +38,7 @@ def main():
     name = random.choice(display)
 
 
-    button = st.button('ボタンを押すんじゃ〜〜〜ッ！')
+    button = st.sidebar.button('ボタンを押すんじゃ〜〜〜ッ！')
 
     if button:
         st.session_state.count += 1 #値の更新
