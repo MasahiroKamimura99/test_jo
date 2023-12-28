@@ -116,11 +116,9 @@ def main():
             st.sidebar.success("イイねありがとうございます！")
 
         with st.sidebar.form("感想・ご意見"):
-            st.sidebar.text("感想・ご意見欄")
-            input_name = st.sidebar.text_input("氏名")
-            input_imp = st.sidebar.text_area("感想")
-
-            # Every form must have a submit button.
+            # st.sidebar.text("感想・ご意見欄")
+            input_name = st.text_input("氏名")
+            input_imp = st.text_area("感想")
             submitted = st.form_submit_button("提出する")
             if submitted:
                 dt_now = datetime.datetime.now()
@@ -131,6 +129,7 @@ def main():
                 df3 = pd.read_csv('impression.csv', encoding='utf_8_sig')
                 df_out3 = pd.concat([df3, df_tmp], axis=0)
                 df_out3.to_csv('impression.csv', encoding='utf_8_sig', index=False)
+                st.text('感想')
                 st.dataframe(df_out3)
 
                 st.sidebar.success("提出ありがとうございました！")
