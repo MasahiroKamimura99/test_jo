@@ -98,7 +98,7 @@ def main():
         st.sidebar.markdown("""
                     ---
                     """)
-        st.text('アクセス回数')
+        st.sidebar.text('アクセス回数')
         st.sidebar.dataframe(df_out1)
 
         # with st.sidebar.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
@@ -116,7 +116,7 @@ def main():
             st.sidebar.success("イイねありがとうございます！")
 
         with st.sidebar.form("感想・ご意見"):
-            # st.sidebar.text("感想・ご意見欄")
+            st.text("もしよかったら感想・ご意見のご記入お願いします。")
             input_name = st.text_input("氏名")
             input_imp = st.text_area("感想")
             submitted = st.form_submit_button("提出する")
