@@ -7,7 +7,7 @@ import pandas as pd
 
 
 def main():
-    st.set_page_config(page_title="Jomikuji", page_icon='ico.jpg')
+    st.set_page_config(page_title="Jomikuji", page_icon=':bar_chart:')
 
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
