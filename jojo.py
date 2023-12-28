@@ -54,8 +54,8 @@ def main():
         l = [dt_now_str]
         df_tmp = pd.DataFrame(l)
         df_tmp = df_tmp.rename(columns={0:'時刻'})
-        df = pd.read_csv('frequency.csv', encoding='utf_8_sig')
-        df_out1 = pd.concat([df, df_tmp], axis=0)
+        df1 = pd.read_csv('frequency.csv', encoding='utf_8_sig')
+        df_out1 = pd.concat([df1, df_tmp], axis=0)
         df_out1.to_csv('frequency.csv', encoding='utf_8_sig', index=False)
         st.dataframe(df_out1)
 
@@ -109,7 +109,7 @@ def main():
             df_tmp = pd.DataFrame(l)
             df_tmp = df_tmp.rename(columns={0:'時刻'})
             df2 = pd.read_csv('iine.csv', encoding='utf_8_sig')
-            df_out2 = pd.concat([df, df_tmp], axis=0)
+            df_out2 = pd.concat([df2, df_tmp], axis=0)
             df_out2.to_csv('iine.csv', encoding='utf_8_sig', index=False)
             st.dataframe(df_out2)
             st.sidebar.success("イイねありがとうございます！")
@@ -127,8 +127,8 @@ def main():
                 l = [input_name, input_imp, dt_now_str]
                 df_tmp = pd.DataFrame(l).T
                 df_tmp = df_tmp.rename(columns={0:'氏名', 1:'感想', 2:'時刻'})
-                df = pd.read_csv('impression.csv', encoding='utf_8_sig')
-                df_out3 = pd.concat([df, df_tmp], axis=0)
+                df3 = pd.read_csv('impression.csv', encoding='utf_8_sig')
+                df_out3 = pd.concat([df3, df_tmp], axis=0)
                 df_out3.to_csv('impression.csv', encoding='utf_8_sig', index=False)
                 st.dataframe(df_out3)
 
