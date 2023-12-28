@@ -11,8 +11,11 @@ def main():
 
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
+    if 'word' not in st.session_state: 
         st.session_state.word = ""
+    if 'class' not in st.session_state: 
         st.session_state.class = ""
+    if 'pict' not in st.session_state: 
         st.session_state.pict = ""
 
     st.header("2024年 新年のJomikuji")
