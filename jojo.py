@@ -39,7 +39,7 @@ def main():
 
 
     button = st.sidebar.button('ボタンを押すんじゃ〜〜〜ッ！')
-
+    
     if button:
         st.session_state.count += 1 #値の更新
 
@@ -68,6 +68,11 @@ def main():
 
         # stc.html("<p style='font-size: 50pt;, color: #ff0000;, font-family:MS Pゴシック,sans-serif;'>" + omikuji['word'])
         st.markdown(omikuji['attention'])
+    elif st.session_state.count > 0:
+        st.markdown("# "+omikuji['word'])
+        st.markdown("## "+omikuji['class'])
+        st.image(omikuji['pict'])
+        
 
 
     if st.session_state.count>10:
