@@ -59,14 +59,15 @@ def main():
         df_out.to_csv('frequency.csv', encoding='utf_8_sig', index=False)
 
         my_bar = st.progress(0)
-        st.balloons()
         for percent_complete in range(100):
             time.sleep(0.01)
             my_bar.progress(percent_complete + 1)
-        my_bar.progress(0)
-
         #resultからランダムに選ぶ
         omikuji = random.choice(result)
+
+        # my_bar.progress(0)
+        st.balloons()
+        
 
         st.session_state.word = omikuji['word']
         st.session_state.class = omikuji['class']
