@@ -22,7 +22,9 @@ def main():
         st.session_state.key_3 = ""
     if 'key_4' not in st.session_state: 
         st.session_state.key_4 = ""
-
+    if 'key_5' not in st.session_state: 
+        st.session_state.key_5 = False # expander open or close
+ 
     st.header("2024年 新年のJomikuji")
     st.markdown("---")
     #結果(result)をリスト化
@@ -105,7 +107,7 @@ def main():
                     ---
                     """)
 
-        with st.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
+        with st.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。", st.session_state.key_5):        
             if st.button("イイねッ！"):
                 dt_now = datetime.datetime.now()
                 dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
@@ -119,6 +121,7 @@ def main():
                 st.sidebar.text('イイね回数')
                 st.sidebar.dataframe(df_out2)
                 st.success("イイねありがとうございます！")
+                st.session_state.key_5 = True
     
             with st.form("感想・ご意見"):
                 st.text("もしよかったら感想・ご意見のご記入お願いします。")
@@ -139,6 +142,7 @@ def main():
                     st.sidebar.dataframe(df_out3)
     
                     st.success("提出ありがとうございました！")
+                    st.session_state.key_5 = True
 
 
 if __name__ == '__main__':
