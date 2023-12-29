@@ -60,8 +60,8 @@ def main():
         df1 = pd.read_csv('frequency.csv', encoding='utf_8_sig')
         df_out1 = pd.concat([df1, df_tmp], axis=0)
         df_out1.to_csv('frequency.csv', encoding='utf_8_sig', index=False)
-        st.text('アクセス回数')
-        st.dataframe(df_out1)
+        st.sidebar.text('アクセス回数')
+        st.sidebar.dataframe(df_out1)
 
         
         my_bar = st.progress(0)
@@ -117,8 +117,9 @@ def main():
                 df2 = pd.read_csv('iine.csv', encoding='utf_8_sig')
                 df_out2 = pd.concat([df2, df_tmp], axis=0)
                 df_out2.to_csv('iine.csv', encoding='utf_8_sig', index=False)
-                st.text('イイね回数')
-                st.dataframe(df_out2)
+                st.sidebar.markdown("---")
+                st.sidebar.text('イイね回数')
+                st.sidebar.dataframe(df_out2)
                 st.success("イイねありがとうございます！")
     
             with st.form("感想・ご意見"):
@@ -135,8 +136,9 @@ def main():
                     df3 = pd.read_csv('impression.csv', encoding='utf_8_sig')
                     df_out3 = pd.concat([df3, df_tmp], axis=0)
                     df_out3.to_csv('impression.csv', encoding='utf_8_sig', index=False)
-                    st.text('感想')
-                    st.dataframe(df_out3)
+                    st.sidebar.markdown("---")
+                    st.sidebar.text('感想')
+                    st.sidebar.dataframe(df_out3)
     
                     st.success("提出ありがとうございました！")
 
