@@ -8,7 +8,7 @@ import pandas as pd
 
 
 def main():
-    st.set_page_config(page_title="Jomikuji", page_icon=':bar_chart:')
+    st.set_page_config(page_title="Jomikuji", page_icon=st.image(ico.jpg))
 
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
@@ -74,7 +74,6 @@ def main():
         # my_bar.progress(0)
         st.balloons()
         
-
         st.session_state.key_1 = omikuji['word']
         st.session_state.key_2 = omikuji['class']
         st.session_state.key_3 = omikuji['pict']
@@ -83,13 +82,10 @@ def main():
         st.markdown("# "+st.session_state.key_1)
         st.markdown("## "+st.session_state.key_2)
         st.image(st.session_state.key_3)
-
-        # st.markdown("# "+omikuji['word'])
-        # st.markdown("## "+omikuji['class'])
-        # st.image(omikuji['pict'])
+        st.markdown(omikuji['attention'])
 
         # stc.html("<p style='font-size: 50pt;, color: #ff0000;, font-family:MS Pゴシック,sans-serif;'>" + omikuji['word'])
-        # st.markdown(omikuji['attention'])
+        
     elif st.session_state.count > 0:
         st.markdown("# "+st.session_state.key_1)
         st.markdown("## "+st.session_state.key_2)
