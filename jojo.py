@@ -5,10 +5,12 @@ import datetime
 import pytz
 import pandas as pd
 # import streamlit.components.v1 as stc
-
-
+from PIL import Image
+ 
 def main():
-    st.set_page_config(page_title="Jomikuji", page_icon=st.image(ico.jpg))
+    image = Image.open('ico.jpg')
+
+    st.set_page_config(page_title="Jomikuji", page_icon=image)
 
     if 'count' not in st.session_state: 
         st.session_state.count = 0 #countがsession_stateに追加されていない場合，0で初期化
