@@ -103,42 +103,42 @@ def main():
                     """)
 
     if st.session_state.count>0:
-        # st.sidebar.markdown("""
-        #             ---
-        #             """)
+        st.markdown("""
+                    ---
+                    """)
 
-        # with st.sidebar.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
-        if st.button("イイねッ！"):
-            dt_now = datetime.datetime.now()
-            dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
-            l = [dt_now_str]
-            df_tmp = pd.DataFrame(l)
-            df_tmp = df_tmp.rename(columns={0:'時刻'})
-            df2 = pd.read_csv('iine.csv', encoding='utf_8_sig')
-            df_out2 = pd.concat([df2, df_tmp], axis=0)
-            df_out2.to_csv('iine.csv', encoding='utf_8_sig', index=False)
-            st.text('イイね回数')
-            st.dataframe(df_out2)
-            st.success("イイねありがとうございます！")
-
-        with st.form("感想・ご意見"):
-            st.text("もしよかったら感想・ご意見のご記入お願いします。")
-            input_name = st.text_input("氏名")
-            input_imp = st.text_area("感想")
-            submitted = st.form_submit_button("提出する")
-            if submitted:
+        with st.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
+            if st.button("イイねッ！"):
                 dt_now = datetime.datetime.now()
                 dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
-                l = [input_name, input_imp, dt_now_str]
-                df_tmp = pd.DataFrame(l).T
-                df_tmp = df_tmp.rename(columns={0:'氏名', 1:'感想', 2:'時刻'})
-                df3 = pd.read_csv('impression.csv', encoding='utf_8_sig')
-                df_out3 = pd.concat([df3, df_tmp], axis=0)
-                df_out3.to_csv('impression.csv', encoding='utf_8_sig', index=False)
-                st.text('感想')
-                st.dataframe(df_out3)
-
-                st.success("提出ありがとうございました！")
+                l = [dt_now_str]
+                df_tmp = pd.DataFrame(l)
+                df_tmp = df_tmp.rename(columns={0:'時刻'})
+                df2 = pd.read_csv('iine.csv', encoding='utf_8_sig')
+                df_out2 = pd.concat([df2, df_tmp], axis=0)
+                df_out2.to_csv('iine.csv', encoding='utf_8_sig', index=False)
+                st.text('イイね回数')
+                st.dataframe(df_out2)
+                st.success("イイねありがとうございます！")
+    
+            with st.form("感想・ご意見"):
+                st.text("もしよかったら感想・ご意見のご記入お願いします。")
+                input_name = st.text_input("氏名")
+                input_imp = st.text_area("感想")
+                submitted = st.form_submit_button("提出する")
+                if submitted:
+                    dt_now = datetime.datetime.now()
+                    dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
+                    l = [input_name, input_imp, dt_now_str]
+                    df_tmp = pd.DataFrame(l).T
+                    df_tmp = df_tmp.rename(columns={0:'氏名', 1:'感想', 2:'時刻'})
+                    df3 = pd.read_csv('impression.csv', encoding='utf_8_sig')
+                    df_out3 = pd.concat([df3, df_tmp], axis=0)
+                    df_out3.to_csv('impression.csv', encoding='utf_8_sig', index=False)
+                    st.text('感想')
+                    st.dataframe(df_out3)
+    
+                    st.success("提出ありがとうございました！")
 
 
 if __name__ == '__main__':
