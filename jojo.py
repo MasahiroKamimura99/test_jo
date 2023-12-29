@@ -109,7 +109,7 @@ def main():
 
         with st.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。", st.session_state.key_5):        
             if st.button("イイねッ！"):
-                dt_now = datetime.datetime.now()
+                dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
                 dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
                 l = [dt_now_str]
                 df_tmp = pd.DataFrame(l)
@@ -129,7 +129,7 @@ def main():
                 input_imp = st.text_area("感想")
                 submitted = st.form_submit_button("提出する")
                 if submitted:
-                    dt_now = datetime.datetime.now()
+                    dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
                     dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
                     l = [input_name, input_imp, dt_now_str]
                     df_tmp = pd.DataFrame(l).T
