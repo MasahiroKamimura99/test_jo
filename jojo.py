@@ -76,7 +76,8 @@ def main():
         omikuji = random.choice(result)
 
         # my_bar.progress(0)
-        st.balloons()
+        # st.balloons()
+        st.snow()
         
         st.session_state.key_1 = omikuji['word']
         st.session_state.key_2 = omikuji['class']
