@@ -8,7 +8,7 @@ import pandas as pd
 from PIL import Image
  
 def main():
-    image = Image.open('ico.jpg')
+    image = Image.open('main.ico')
 
     st.set_page_config(page_title="Jomikuji", page_icon=image)
 
