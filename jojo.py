@@ -18,6 +18,8 @@ def main():
         st.session_state.key_2 = ""
     if 'key_3' not in st.session_state: 
         st.session_state.key_3 = ""
+    if 'key_4' not in st.session_state: 
+        st.session_state.key_4 = ""
 
     st.header("2024年 新年のJomikuji")
     st.markdown("---")
@@ -45,7 +47,7 @@ def main():
     name = random.choice(display)
 
 
-    button = st.sidebar.button('ボタンを押すんじゃ〜〜〜ッ！')
+    button = st.button('ボタンを押すんじゃ〜〜〜ッ！')
     
     if button:
         st.session_state.count += 1 #値の更新
@@ -58,8 +60,8 @@ def main():
         df1 = pd.read_csv('frequency.csv', encoding='utf_8_sig')
         df_out1 = pd.concat([df1, df_tmp], axis=0)
         df_out1.to_csv('frequency.csv', encoding='utf_8_sig', index=False)
-        st.sidebar.text('アクセス回数')
-        st.sidebar.dataframe(df_out1)
+        st.text('アクセス回数')
+        st.dataframe(df_out1)
 
         
         my_bar = st.progress(0)
@@ -76,6 +78,7 @@ def main():
         st.session_state.key_1 = omikuji['word']
         st.session_state.key_2 = omikuji['class']
         st.session_state.key_3 = omikuji['pict']
+        st.session_state.key_4 = omikuji['attention']
 
         st.markdown("# "+st.session_state.key_1)
         st.markdown("## "+st.session_state.key_2)
@@ -86,11 +89,12 @@ def main():
         # st.image(omikuji['pict'])
 
         # stc.html("<p style='font-size: 50pt;, color: #ff0000;, font-family:MS Pゴシック,sans-serif;'>" + omikuji['word'])
-        st.markdown(omikuji['attention'])
+        # st.markdown(omikuji['attention'])
     elif st.session_state.count > 0:
         st.markdown("# "+st.session_state.key_1)
         st.markdown("## "+st.session_state.key_2)
         st.image(st.session_state.key_3)
+        st.markdown(st.session_state.key_4)
 
     if st.session_state.count>10:
         st.markdown(str(st.session_state.count)+"回実行しています"
@@ -99,12 +103,12 @@ def main():
                     """)
 
     if st.session_state.count>0:
-        st.sidebar.markdown("""
-                    ---
-                    """)
+        # st.sidebar.markdown("""
+        #             ---
+        #             """)
 
         # with st.sidebar.expander("もしよかったら「いいね」、もしくは「感想・ご意見」をください。"):        
-        if st.sidebar.button("イイねッ！"):
+        if st.button("イイねッ！"):
             dt_now = datetime.datetime.now()
             dt_now_str = dt_now.strftime('%Y年%m月%d日 %H:%M:%S')
             l = [dt_now_str]
@@ -113,11 +117,11 @@ def main():
             df2 = pd.read_csv('iine.csv', encoding='utf_8_sig')
             df_out2 = pd.concat([df2, df_tmp], axis=0)
             df_out2.to_csv('iine.csv', encoding='utf_8_sig', index=False)
-            st.sidebar.text('イイね回数')
-            st.sidebar.dataframe(df_out2)
-            st.sidebar.success("イイねありがとうございます！")
+            st.text('イイね回数')
+            st.dataframe(df_out2)
+            st.success("イイねありがとうございます！")
 
-        with st.sidebar.form("感想・ご意見"):
+        with st.form("感想・ご意見"):
             st.text("もしよかったら感想・ご意見のご記入お願いします。")
             input_name = st.text_input("氏名")
             input_imp = st.text_area("感想")
@@ -134,7 +138,7 @@ def main():
                 st.text('感想')
                 st.dataframe(df_out3)
 
-                st.sidebar.success("提出ありがとうございました！")
+                st.success("提出ありがとうございました！")
 
 
 if __name__ == '__main__':
